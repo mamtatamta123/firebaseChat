@@ -10,14 +10,15 @@ import {
 import firestore from '@react-native-firebase/firestore';
 
 const UserChat = ({navigation, route}) => {
-  const {userData, myId: currentUserId} = route.params;
+  // const {userData, myId: currentUserId} = route.params;
+  const currentUserId = route.params.myId;
+  const userData = route.params.item;
   const [allMessages, setAllMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const flatListRef = useRef();
 
   useEffect(() => {
     const chatId = [userData.userId, currentUserId].sort().join('_');
-
     const unsubscribe = firestore()
       .collection('chats')
       .doc(chatId)

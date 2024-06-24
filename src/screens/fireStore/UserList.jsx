@@ -59,7 +59,7 @@ export default function UserList({navigation}) {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('UserChat', {userData: item, myId: myId});
+                navigation.navigate('UserChat', {item, myId});
               }}
               style={{
                 height: 55,
