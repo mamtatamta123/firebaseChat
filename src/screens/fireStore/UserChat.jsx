@@ -10,16 +10,17 @@ import {
 import firestore from '@react-native-firebase/firestore';
 
 const UserChat = ({navigation, route}) => {
-  const userData = route.params.userData;
-  const currentUserId = route.params.myId;
+  const {userData, myId: currentUserId} = route.params;
   const [allMessages, setAllMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const flatListRef = useRef();
 
   useEffect(() => {
+    const chatId = [userData.userId, currentUserId].sort().join('_');
+
     const unsubscribe = firestore()
       .collection('chats')
-      .doc(userData.userId)
+      .doc(chatId)
       .collection('messages')
       .orderBy('timestamp', 'asc')
       .onSnapshot(querySnapshot => {
@@ -31,13 +32,14 @@ const UserChat = ({navigation, route}) => {
       });
 
     return () => unsubscribe();
-  }, [userData]);
+  }, [userData, currentUserId]);
 
   const sendMessage = async () => {
     if (inputMessage.trim()) {
+      const chatId = [userData.userId, currentUserId].sort().join('_');
       await firestore()
         .collection('chats')
-        .doc(userData.userId)
+        .doc(chatId)
         .collection('messages')
         .add({
           message: inputMessage,
