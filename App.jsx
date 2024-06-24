@@ -4,27 +4,26 @@ import Login from './src/screens/Login';
 import MainStack from './src/navigation/MainStack';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import UserList from './src/screens/fireStore/UserList';
 import FirebaseLogin from './src/screens/fireStore/FirebaseLogin';
+import UserChat from './src/screens/fireStore/UserChat';
 
 const App = () => {
-
-
   useEffect(() => {
     getDeviceToken();
     // checklogin();
     // const navigation = useNavigation();
   }, []);
 
-    // const checklogin = async () => {
-    //   const name = await AsyncStorage.getItem('NAME');
-    //   if (name) {
-    //     navigation.navigate('UserList');
-    //   } else {
-    //     navigation.navigate('FirebaseLogin');
-    //   }
-    // };
+  // const checklogin = async () => {
+  //   const name = await AsyncStorage.getItem('NAME');
+  //   if (name) {
+  //     navigation.navigate('UserList');
+  //   } else {
+  //     navigation.navigate('FirebaseLogin');
+  //   }
+  // };
 
   const getDeviceToken = async () => {
     const token = await messaging().getToken();
@@ -32,6 +31,7 @@ const App = () => {
   };
 
   return <MainStack />;
+  // return <UserChat />;
 };
 
 export default App;
