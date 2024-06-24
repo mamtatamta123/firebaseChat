@@ -59,7 +59,6 @@ export default function UserList({navigation}) {
           return (
             <TouchableOpacity
               onPress={() => {
-                console.log('id########', id);
                 navigation.navigate('UserChat', {userData: item, myId: myId});
               }}
               style={{
