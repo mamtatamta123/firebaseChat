@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">cyberx</string>
+<string name="app_name">cyberx</string>
+<string name="facebook_app_id">355347634251285</string>
+<string name="fb_login_protocol_scheme">fb355347634251285</string>
+<string name="facebook_client_token">9e8a8d7878ee21a47b5ebc69beb4aacb</string>
 </resources>

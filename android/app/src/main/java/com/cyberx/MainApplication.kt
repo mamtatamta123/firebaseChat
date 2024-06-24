@@ -10,6 +10,8 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+// new--
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 
 class MainApplication : Application(), ReactApplication {
 
